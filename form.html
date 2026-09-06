@@ -1,0 +1,1463 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#06070f" />
+    <meta name="robots" content="noindex" />
+    <title>Contact & Feedback · Destiny Palm AI</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%AE%3C/text%3E%3C/svg%3E" />
+
+    <style>
+      /* ====================================================================
+         Self-contained form page. No build step, no dependencies, no fonts to
+         download. Open the file directly or serve it from any host.
+         ==================================================================== */
+
+      :root {
+        /* Tells the browser to draw radios, checkboxes, date pickers, select
+           menus and scrollbars in their dark style rather than their light one. */
+        color-scheme: dark;
+
+        --ink-900: #05060d;
+        --glass: rgba(255, 255, 255, 0.045);
+        --glass-strong: rgba(255, 255, 255, 0.07);
+        --stroke: rgba(255, 255, 255, 0.09);
+        --stroke-strong: rgba(255, 255, 255, 0.18);
+        --text: #eef1ff;
+        --text-soft: #b4bbd8;
+        --text-dim: #7d85a8;
+        --gold: #e9c67e;
+        --violet: #a084ff;
+        --blue: #52c7ff;
+        --danger: #ff8f8f;
+        --ok: #6ee7b7;
+        --radius-lg: 28px;
+        --radius-md: 18px;
+        --radius-sm: 12px;
+        --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+          Arial, "Noto Sans", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        background: var(--ink-900);
+        color: var(--text);
+        font-family: var(--font);
+        font-size: 16px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .aurora {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        overflow: hidden;
+        background: radial-gradient(120% 90% at 50% -10%, #131a3a 0%, transparent 60%),
+          linear-gradient(180deg, #06070f 0%, #05060d 100%);
+      }
+
+      .aurora span {
+        position: absolute;
+        display: block;
+        border-radius: 50%;
+        filter: blur(70px);
+        opacity: 0.45;
+      }
+
+      .aurora span:nth-child(1) {
+        width: 60vw;
+        max-width: 520px;
+        aspect-ratio: 1;
+        top: -14%;
+        left: -18%;
+        background: radial-gradient(circle, rgba(109, 77, 246, 0.6), transparent 70%);
+      }
+
+      .aurora span:nth-child(2) {
+        width: 55vw;
+        max-width: 460px;
+        aspect-ratio: 1;
+        top: 24%;
+        right: -22%;
+        background: radial-gradient(circle, rgba(82, 199, 255, 0.32), transparent 70%);
+      }
+
+      .aurora span:nth-child(3) {
+        width: 70vw;
+        max-width: 560px;
+        aspect-ratio: 1;
+        bottom: -28%;
+        left: 6%;
+        background: radial-gradient(circle, rgba(233, 198, 126, 0.18), transparent 70%);
+      }
+
+      .wrap {
+        width: 100%;
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 28px 18px 64px;
+      }
+
+      @media (min-width: 720px) {
+        .wrap {
+          padding: 48px 32px 80px;
+        }
+      }
+
+      /* ---------- header ---------- */
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--text-soft);
+        margin-bottom: 24px;
+      }
+
+      .brand-mark {
+        width: 30px;
+        height: 30px;
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        background: linear-gradient(140deg, rgba(160, 132, 255, 0.9), rgba(82, 199, 255, 0.55));
+        box-shadow: 0 0 42px -12px rgba(160, 132, 255, 0.55);
+        font-size: 15px;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(1.7rem, 6vw, 2.4rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+        background: linear-gradient(120deg, #ffffff 10%, var(--gold) 55%, var(--violet) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .lede {
+        margin: 0 0 28px;
+        color: var(--text-soft);
+        max-width: 46ch;
+      }
+
+      /* ---------- card + fieldsets ---------- */
+
+      .card {
+        position: relative;
+        background: var(--glass);
+        border: 1px solid var(--stroke);
+        border-radius: var(--radius-lg);
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
+        box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.9);
+        padding: 22px;
+        overflow: hidden;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      }
+
+      @media (min-width: 720px) {
+        .card {
+          padding: 32px;
+        }
+      }
+
+      fieldset {
+        margin: 0 0 28px;
+        padding: 0;
+        border: 0;
+      }
+
+      fieldset:last-of-type {
+        margin-bottom: 8px;
+      }
+
+      legend {
+        padding: 0;
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 4px;
+      }
+
+      .legend-note {
+        color: var(--text-dim);
+        font-size: 13.5px;
+        margin: 0 0 18px;
+      }
+
+      .row {
+        display: grid;
+        gap: 18px;
+        margin-bottom: 18px;
+      }
+
+      @media (min-width: 640px) {
+        .row.two {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      label,
+      .group-label {
+        font-size: 14.5px;
+        font-weight: 500;
+        color: var(--text);
+      }
+
+      .optional {
+        color: var(--text-dim);
+        font-weight: 400;
+      }
+
+      .req {
+        color: var(--gold);
+        margin-left: 2px;
+      }
+
+      .hint {
+        font-size: 13px;
+        color: var(--text-dim);
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="url"],
+      input[type="date"],
+      input[type="number"],
+      select,
+      textarea {
+        width: 100%;
+        min-height: 50px;
+        padding: 13px 15px;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--stroke-strong);
+        background: rgba(8, 10, 20, 0.6);
+        color: var(--text);
+        font: inherit;
+        font-size: 16px; /* 16px stops iOS Safari zooming on focus */
+        transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      }
+
+      textarea {
+        min-height: 140px;
+        resize: vertical;
+        line-height: 1.6;
+      }
+
+      select {
+        appearance: none;
+        background-image: linear-gradient(45deg, transparent 50%, var(--text-soft) 50%),
+          linear-gradient(135deg, var(--text-soft) 50%, transparent 50%);
+        background-position: calc(100% - 20px) 22px, calc(100% - 14px) 22px;
+        background-size: 6px 6px, 6px 6px;
+        background-repeat: no-repeat;
+        padding-right: 42px;
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: #5d6688;
+      }
+
+      input:hover,
+      select:hover,
+      textarea:hover {
+        border-color: rgba(255, 255, 255, 0.28);
+      }
+
+      input:focus-visible,
+      select:focus-visible,
+      textarea:focus-visible,
+      .file-drop:focus-visible,
+      button:focus-visible,
+      a:focus-visible {
+        outline: 2px solid var(--violet);
+        outline-offset: 2px;
+        border-color: transparent;
+      }
+
+      [aria-invalid="true"] {
+        border-color: rgba(255, 143, 143, 0.7);
+        background: rgba(255, 143, 143, 0.06);
+      }
+
+      .error {
+        display: none;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        color: var(--danger);
+      }
+
+      .error.show {
+        display: flex;
+      }
+
+      /* ---------- choice groups ---------- */
+
+      .choices {
+        display: grid;
+        gap: 10px;
+        margin-top: 4px;
+      }
+
+      @media (min-width: 560px) {
+        .choices.two {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .choice {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 13px 15px;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--stroke);
+        background: var(--glass);
+        cursor: pointer;
+        transition: border-color 0.18s ease, background 0.18s ease;
+        font-weight: 400;
+      }
+
+      .choice:hover {
+        background: var(--glass-strong);
+      }
+
+      .choice input {
+        margin: 3px 0 0;
+        width: 18px;
+        height: 18px;
+        accent-color: #a084ff;
+        flex: none;
+      }
+
+      .choice:has(input:checked) {
+        border-color: rgba(160, 132, 255, 0.6);
+        background: rgba(160, 132, 255, 0.1);
+      }
+
+      .choice small {
+        display: block;
+        color: var(--text-dim);
+        font-size: 12.5px;
+        line-height: 1.5;
+      }
+
+      /* ---------- rating ---------- */
+
+      .rating {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      input[type="range"] {
+        flex: 1;
+        accent-color: #e9c67e;
+        height: 30px;
+      }
+
+      .rating output {
+        min-width: 108px;
+        text-align: right;
+        font-size: 14px;
+        color: var(--gold);
+      }
+
+      /* ---------- file ---------- */
+
+      .file-drop {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 16px;
+        border-radius: var(--radius-md);
+        border: 1px dashed var(--stroke-strong);
+        background: var(--glass);
+        cursor: pointer;
+        transition: border-color 0.18s ease, background 0.18s ease;
+      }
+
+      .file-drop:hover,
+      .file-drop.dragging {
+        border-color: var(--gold);
+        background: rgba(233, 198, 126, 0.07);
+      }
+
+      .file-drop .icon {
+        font-size: 22px;
+      }
+
+      .file-drop b {
+        display: block;
+        font-size: 14.5px;
+        font-weight: 500;
+      }
+
+      .file-drop span {
+        font-size: 13px;
+        color: var(--text-dim);
+      }
+
+      .file-drop input[type="file"] {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .file-clear {
+        margin-left: auto;
+        border: 1px solid var(--stroke);
+        background: transparent;
+        color: var(--text-soft);
+        border-radius: 999px;
+        min-height: 34px;
+        padding: 0 14px;
+        font: inherit;
+        font-size: 13px;
+        cursor: pointer;
+      }
+
+      /* ---------- counter ---------- */
+
+      .counter {
+        align-self: flex-end;
+        font-size: 12.5px;
+        color: var(--text-dim);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .counter.near {
+        color: var(--gold);
+      }
+
+      .counter.over {
+        color: var(--danger);
+      }
+
+      /* ---------- summary + status ---------- */
+
+      .summary {
+        display: none;
+        margin-bottom: 24px;
+        padding: 16px 18px;
+        border-radius: var(--radius-md);
+        border: 1px solid rgba(255, 143, 143, 0.35);
+        background: rgba(255, 143, 143, 0.08);
+      }
+
+      .summary.show {
+        display: block;
+      }
+
+      .summary h2 {
+        margin: 0 0 8px;
+        font-size: 15px;
+        color: var(--danger);
+      }
+
+      .summary ol {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .summary li + li {
+        margin-top: 4px;
+      }
+
+      .summary a {
+        color: var(--text);
+        font-size: 14px;
+      }
+
+      .note {
+        display: flex;
+        gap: 12px;
+        padding: 14px 16px;
+        border-radius: var(--radius-md);
+        border: 1px solid rgba(82, 199, 255, 0.24);
+        background: rgba(82, 199, 255, 0.07);
+        font-size: 14px;
+        color: var(--text-soft);
+        margin-bottom: 24px;
+      }
+
+      .note b {
+        color: var(--text);
+      }
+
+      /* ---------- actions ---------- */
+
+      .actions {
+        display: grid;
+        gap: 12px;
+        margin-top: 26px;
+        padding-top: 22px;
+        border-top: 1px solid var(--stroke);
+      }
+
+      @media (min-width: 560px) {
+        .actions {
+          grid-template-columns: 2fr 1fr;
+        }
+      }
+
+      button.btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 54px;
+        padding: 0 24px;
+        border-radius: 16px;
+        border: 1px solid transparent;
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.16s ease, box-shadow 0.22s ease, background 0.22s ease;
+      }
+
+      button.btn:active {
+        transform: scale(0.985);
+      }
+
+      button.btn[disabled] {
+        opacity: 0.55;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .btn-primary {
+        color: #0a0714;
+        background: linear-gradient(120deg, var(--gold) 0%, #ffe6b0 42%, var(--violet) 130%);
+        box-shadow: 0 16px 40px -18px rgba(233, 198, 126, 0.8);
+      }
+
+      .btn-secondary {
+        background: var(--glass-strong);
+        border-color: var(--stroke-strong);
+        color: var(--text);
+      }
+
+      .spinner {
+        width: 17px;
+        height: 17px;
+        border-radius: 50%;
+        border: 2px solid rgba(0, 0, 0, 0.25);
+        border-top-color: #0a0714;
+        animation: spin 0.8s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .legal {
+        margin-top: 20px;
+        font-size: 12.5px;
+        color: var(--text-dim);
+        line-height: 1.6;
+      }
+
+      /* ---------- success ---------- */
+
+      .done {
+        text-align: center;
+        padding: 20px 6px;
+      }
+
+      .done .tick.pending {
+        background: rgba(82, 199, 255, 0.12);
+        border-color: rgba(82, 199, 255, 0.4);
+      }
+
+      .done .tick {
+        width: 62px;
+        height: 62px;
+        margin: 0 auto 18px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 28px;
+        background: rgba(110, 231, 183, 0.14);
+        border: 1px solid rgba(110, 231, 183, 0.4);
+      }
+
+      .done h2 {
+        margin: 0 0 10px;
+        font-size: 1.5rem;
+      }
+
+      .done p {
+        color: var(--text-soft);
+        margin: 0 auto 20px;
+        max-width: 42ch;
+      }
+
+      .echo {
+        text-align: left;
+        margin: 22px auto 0;
+        max-width: 520px;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--stroke);
+        background: rgba(8, 10, 20, 0.55);
+        padding: 16px;
+        font-size: 13px;
+        color: var(--text-soft);
+        overflow-x: auto;
+      }
+
+      .echo dt {
+        color: var(--text-dim);
+        font-size: 11.5px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .echo dd {
+        margin: 2px 0 12px;
+        color: var(--text);
+        overflow-wrap: anywhere;
+      }
+
+      .echo dd:last-child {
+        margin-bottom: 0;
+      }
+
+      .hp {
+        position: absolute !important;
+        left: -9999px !important;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.001ms !important;
+          transition-duration: 0.001ms !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+
+    <div class="wrap">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">🔮</span>
+        Destiny Palm AI
+      </div>
+
+      <h1>Contact &amp; feedback</h1>
+      <p class="lede">
+        Tell us how your reading went, report a problem, or ask us to delete something. We read every
+        message.
+      </p>
+
+      <div class="card">
+        <!-- Error summary. Filled in by script, focused after a failed submit. -->
+        <div class="summary" id="summary" tabindex="-1" role="alert" aria-live="assertive">
+          <h2 id="summary-title">Please check these fields</h2>
+          <ol id="summary-list"></ol>
+        </div>
+
+        <!--
+          Every field carries real HTML constraints, so the form still validates
+          without JavaScript. The script sets noValidate itself and replaces the
+          browser bubbles with inline messages.
+        -->
+        <form id="contact-form" method="post" action="#" autocomplete="on" data-endpoint="">
+          <!-- Honeypot: real people never see or fill this. -->
+          <div class="hp" aria-hidden="true">
+            <label for="website">Leave this field empty</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <fieldset>
+            <legend>About you</legend>
+            <p class="legend-note">So we know who to reply to.</p>
+
+            <div class="row two">
+              <div class="field">
+                <label for="name">Full name<span class="req" aria-hidden="true">*</span></label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  minlength="2"
+                  maxlength="80"
+                  autocomplete="name"
+                  placeholder="Amara Okafor"
+                  aria-describedby="name-error"
+                />
+                <p class="error" id="name-error"><span aria-hidden="true">⚠</span><span></span></p>
+              </div>
+
+              <div class="field">
+                <label for="email">Email address<span class="req" aria-hidden="true">*</span></label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  maxlength="120"
+                  autocomplete="email"
+                  inputmode="email"
+                  placeholder="you@example.com"
+                  aria-describedby="email-hint email-error"
+                />
+                <p class="hint" id="email-hint">We only use it to answer this message.</p>
+                <p class="error" id="email-error"><span aria-hidden="true">⚠</span><span></span></p>
+              </div>
+            </div>
+
+            <div class="row two">
+              <div class="field">
+                <label for="phone">Phone <span class="optional">(optional)</span></label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  maxlength="24"
+                  autocomplete="tel"
+                  inputmode="tel"
+                  placeholder="+44 7700 900123"
+                  aria-describedby="phone-error"
+                />
+                <p class="error" id="phone-error"><span aria-hidden="true">⚠</span><span></span></p>
+              </div>
+
+              <div class="field">
+                <label for="country">Country<span class="req" aria-hidden="true">*</span></label>
+                <select id="country" name="country" required autocomplete="country-name" aria-describedby="country-error">
+                  <option value="">Choose a country…</option>
+                  <option>Australia</option>
+                  <option>Bangladesh</option>
+                  <option>Brazil</option>
+                  <option>Canada</option>
+                  <option>Egypt</option>
+                  <option>France</option>
+                  <option>Germany</option>
+                  <option>India</option>
+                  <option>Indonesia</option>
+                  <option>Nigeria</option>
+                  <option>Pakistan</option>
+                  <option>Philippines</option>
+                  <option>South Africa</option>
+                  <option>United Arab Emirates</option>
+                  <option>United Kingdom</option>
+                  <option>United States</option>
+                  <option value="other">Somewhere else</option>
+                </select>
+                <p class="error" id="country-error"><span aria-hidden="true">⚠</span><span></span></p>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Your message</legend>
+            <p class="legend-note">Pick the topic that fits best.</p>
+
+            <div class="field" role="group" aria-labelledby="topic-label" aria-describedby="topic-error">
+              <span class="group-label" id="topic-label">
+                What is this about?<span class="req" aria-hidden="true">*</span>
+              </span>
+              <div class="choices two">
+                <label class="choice">
+                  <input type="radio" name="topic" value="feedback" required />
+                  <span>Feedback<small>Tell us what you thought of your reading.</small></span>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="topic" value="problem" />
+                  <span>A problem<small>Something did not work or looked wrong.</small></span>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="topic" value="privacy" />
+                  <span>Privacy request<small>Delete an image or ask about your data.</small></span>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="topic" value="other" />
+                  <span>Something else<small>Partnerships, press, general questions.</small></span>
+                </label>
+              </div>
+              <p class="error" id="topic-error"><span aria-hidden="true">⚠</span><span></span></p>
+            </div>
+
+            <!-- Shown only for problem and privacy topics. -->
+            <div class="row" id="reading-row" hidden>
+              <div class="field">
+                <label for="reading-id">Reading ID <span class="optional">(if you have it)</span></label>
+                <input
+                  type="text"
+                  id="reading-id"
+                  name="readingId"
+                  maxlength="16"
+                  pattern="[0-9a-fA-F]{16}"
+                  spellcheck="false"
+                  autocomplete="off"
+                  placeholder="4f2a9c7e18b30d65"
+                  aria-describedby="reading-id-hint reading-id-error"
+                />
+                <p class="hint" id="reading-id-hint">
+                  16 letters and numbers, shown at the bottom of your results page.
+                </p>
+                <p class="error" id="reading-id-error"><span aria-hidden="true">⚠</span><span></span></p>
+              </div>
+            </div>
+
+            <div class="row two">
+              <div class="field">
+                <label for="reading-date">When did this happen? <span class="optional">(optional)</span></label>
+                <input type="date" id="reading-date" name="readingDate" aria-describedby="reading-date-error" />
+                <p class="error" id="reading-date-error"><span aria-hidden="true">⚠</span><span></span></p>
+              </div>
+
+              <div class="field">
+                <label for="rating">How was your reading?</label>
+                <div class="rating">
+                  <input
+                    type="range"
+                    id="rating"
+                    name="rating"
+                    min="1"
+                    max="5"
+                    step="1"
+                    value="4"
+                    aria-describedby="rating-value"
+                  />
+                  <output id="rating-value" for="rating">4 · Good</output>
+                </div>
+              </div>
+            </div>
+
+            <div class="field" style="margin-bottom: 18px" role="group" aria-labelledby="device-label">
+              <span class="group-label" id="device-label">
+                How did you use the app? <span class="optional">(tick any)</span>
+              </span>
+              <div class="choices two">
+                <label class="choice">
+                  <input type="checkbox" name="device" value="phone-camera" />
+                  <span>Phone camera</span>
+                </label>
+                <label class="choice">
+                  <input type="checkbox" name="device" value="uploaded-photo" />
+                  <span>Uploaded a photo</span>
+                </label>
+                <label class="choice">
+                  <input type="checkbox" name="device" value="android" />
+                  <span>Android</span>
+                </label>
+                <label class="choice">
+                  <input type="checkbox" name="device" value="iphone" />
+                  <span>iPhone or iPad</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="message">Your message<span class="req" aria-hidden="true">*</span></label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                minlength="20"
+                maxlength="1200"
+                placeholder="Tell us what happened, in your own words…"
+                aria-describedby="message-counter message-error"
+              ></textarea>
+              <p class="counter" id="message-counter" aria-live="polite">0 / 1200</p>
+              <p class="error" id="message-error"><span aria-hidden="true">⚠</span><span></span></p>
+            </div>
+
+            <div class="field" style="margin-top: 18px">
+              <span class="group-label">Screenshot <span class="optional">(optional)</span></span>
+              <label class="file-drop" id="file-drop" for="screenshot" tabindex="0">
+                <span class="icon" aria-hidden="true">📎</span>
+                <span>
+                  <b id="file-name">Choose an image or drop one here</b>
+                  <span id="file-meta">JPEG, PNG or WebP · up to 5 MB</span>
+                </span>
+                <input
+                  type="file"
+                  id="screenshot"
+                  name="screenshot"
+                  accept="image/jpeg,image/png,image/webp"
+                  aria-describedby="screenshot-error"
+                />
+                <button type="button" class="file-clear" id="file-clear" hidden>Remove</button>
+              </label>
+              <p class="error" id="screenshot-error"><span aria-hidden="true">⚠</span><span></span></p>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Before you send</legend>
+            <p class="legend-note">One tick is required, the other is up to you.</p>
+
+            <div class="choices">
+              <label class="choice">
+                <input type="checkbox" id="consent" name="consent" value="yes" required aria-describedby="consent-error" />
+                <span>
+                  I agree to be contacted about this message<span class="req" aria-hidden="true">*</span>
+                  <small>We keep it only as long as it takes to answer you.</small>
+                </span>
+              </label>
+              <label class="choice">
+                <input type="checkbox" name="updates" value="yes" />
+                <span>
+                  Email me when new features launch
+                  <small>Rarely, and you can stop it any time.</small>
+                </span>
+              </label>
+            </div>
+            <p class="error" id="consent-error"><span aria-hidden="true">⚠</span><span></span></p>
+          </fieldset>
+
+          <div class="actions">
+            <button type="submit" class="btn btn-primary" id="submit-button">Send message</button>
+            <button type="reset" class="btn btn-secondary" id="reset-button">Clear form</button>
+          </div>
+
+          <p class="legal">
+            Fields marked <span class="req" aria-hidden="true">*</span><span class="sr-only">with an asterisk</span>
+            are required. Palm readings are provided for entertainment and cultural purposes only.
+            They are not scientifically proven predictions and should not be used as a basis for
+            medical, financial, legal, or other important life decisions.
+          </p>
+        </form>
+
+        <!-- Replaces the form after a send. -->
+        <div class="done" id="done" hidden>
+          <div class="tick" id="done-icon" aria-hidden="true">✓</div>
+          <h2 id="done-title" tabindex="-1">Thanks, that is on its way</h2>
+          <p id="done-text"></p>
+          <dl class="echo" id="done-echo"></dl>
+          <div class="actions" style="max-width: 320px; margin-inline: auto">
+            <button type="button" class="btn btn-secondary" id="again">Write another message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        "use strict";
+
+        var form = document.getElementById("contact-form");
+
+        // Turn off the browser's own error bubbles only once the script is
+        // running. Without JS the form keeps native validation instead.
+        form.noValidate = true;
+        var summary = document.getElementById("summary");
+        var summaryList = document.getElementById("summary-list");
+        var submitButton = document.getElementById("submit-button");
+        var done = document.getElementById("done");
+        var openedAt = Date.now();
+
+        var MAX_FILE_BYTES = 5 * 1024 * 1024;
+        var ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
+
+        var RATING_WORDS = { 1: "Poor", 2: "Not great", 3: "Okay", 4: "Good", 5: "Loved it" };
+
+        /* ---------- validation rules ------------------------------------- */
+
+        // One message per field per failure reason. Written as a person would
+        // say them, never "invalid input".
+        var MESSAGES = {
+          name: {
+            valueMissing: "Please tell us your name.",
+            tooShort: "That looks too short. Please write your full name."
+          },
+          email: {
+            valueMissing: "We need an email address to reply to.",
+            typeMismatch: "That email address is missing something, like the @ sign."
+          },
+          phone: { custom: "Please use digits, spaces and + only." },
+          country: { valueMissing: "Please choose your country." },
+          topic: { valueMissing: "Please pick what this message is about." },
+          readingId: { patternMismatch: "A reading ID is 16 letters and numbers, with nothing else." },
+          readingDate: { custom: "That date is in the future. Please pick today or earlier." },
+          message: {
+            valueMissing: "Please write your message.",
+            tooShort: "Please add a little more detail, at least 20 characters."
+          },
+          consent: { valueMissing: "Please tick this box so we can reply to you." },
+          screenshot: { custom: "" }
+        };
+
+        function fieldById(name) {
+          if (name === "topic") return form.querySelector('input[name="topic"]');
+          return form.elements[name];
+        }
+
+        function errorBox(name) {
+          var id = name.replace(/[A-Z]/g, function (c) {
+            return "-" + c.toLowerCase();
+          });
+          return document.getElementById(id + "-error");
+        }
+
+        function labelFor(name) {
+          if (name === "topic") return "What is this about?";
+          if (name === "consent") return "Agreement to be contacted";
+          if (name === "screenshot") return "Screenshot";
+          var input = fieldById(name);
+          var label = input && input.id ? form.querySelector('label[for="' + input.id + '"]') : null;
+          return label ? label.textContent.replace("*", "").trim() : name;
+        }
+
+        /** Returns an error message for one field, or "" when it is fine. */
+        function checkField(name) {
+          var input = fieldById(name);
+          if (!input) return "";
+          var rules = MESSAGES[name] || {};
+
+          if (name === "screenshot") {
+            var file = input.files && input.files[0];
+            if (!file) return "";
+            if (ALLOWED_TYPES.indexOf(file.type) === -1) {
+              return "That file is not a JPEG, PNG or WebP image.";
+            }
+            if (file.size > MAX_FILE_BYTES) {
+              return "That image is " + formatBytes(file.size) + ". Please keep it under 5 MB.";
+            }
+            return "";
+          }
+
+          if (name === "topic") {
+            var picked = form.querySelector('input[name="topic"]:checked');
+            return picked ? "" : rules.valueMissing;
+          }
+
+          if (name === "phone" && input.value.trim()) {
+            if (!/^[+()\d\s-]{6,24}$/.test(input.value.trim())) return rules.custom;
+            return "";
+          }
+
+          if (name === "readingDate" && input.value) {
+            var today = new Date();
+            today.setHours(23, 59, 59, 999);
+            if (new Date(input.value) > today) return rules.custom;
+            return "";
+          }
+
+          var state = input.validity;
+          if (state.valid) return "";
+          if (state.valueMissing && rules.valueMissing) return rules.valueMissing;
+          if (state.typeMismatch && rules.typeMismatch) return rules.typeMismatch;
+          if (state.tooShort && rules.tooShort) return rules.tooShort;
+          if (state.patternMismatch && rules.patternMismatch) return rules.patternMismatch;
+          return "Please check this field.";
+        }
+
+        function showError(name, message) {
+          var box = errorBox(name);
+          var input = fieldById(name);
+          if (box) {
+            box.classList.toggle("show", Boolean(message));
+            box.lastElementChild.textContent = message || "";
+          }
+          if (input) {
+            var targets = name === "topic" ? form.querySelectorAll('input[name="topic"]') : [input];
+            Array.prototype.forEach.call(targets, function (element) {
+              if (message) element.setAttribute("aria-invalid", "true");
+              else element.removeAttribute("aria-invalid");
+            });
+          }
+        }
+
+        var VALIDATED = [
+          "name",
+          "email",
+          "phone",
+          "country",
+          "topic",
+          "readingId",
+          "readingDate",
+          "message",
+          "consent",
+          "screenshot"
+        ];
+
+        function validateAll() {
+          var failures = [];
+          VALIDATED.forEach(function (name) {
+            var message = checkField(name);
+            showError(name, message);
+            if (message) failures.push({ name: name, message: message });
+          });
+          return failures;
+        }
+
+        /* ---------- live feedback ---------------------------------------- */
+
+        // Validate on blur, then keep correcting live once a field has failed
+        // once. Nagging while someone is still typing is unpleasant.
+        VALIDATED.forEach(function (name) {
+          var input = fieldById(name);
+          if (!input) return;
+          var group = name === "topic" ? form.querySelectorAll('input[name="topic"]') : [input];
+
+          Array.prototype.forEach.call(group, function (element) {
+            element.addEventListener("blur", function () {
+              showError(name, checkField(name));
+            });
+            element.addEventListener("change", function () {
+              showError(name, checkField(name));
+            });
+            element.addEventListener("input", function () {
+              if (element.getAttribute("aria-invalid") === "true") {
+                showError(name, checkField(name));
+              }
+            });
+          });
+        });
+
+        /* ---------- conditional field ------------------------------------ */
+
+        var readingRow = document.getElementById("reading-row");
+        form.querySelectorAll('input[name="topic"]').forEach(function (radio) {
+          radio.addEventListener("change", function () {
+            var relevant = radio.value === "problem" || radio.value === "privacy";
+            readingRow.hidden = !relevant;
+            if (!relevant) {
+              form.elements.readingId.value = "";
+              showError("readingId", "");
+            }
+          });
+        });
+
+        /* ---------- rating + counter ------------------------------------- */
+
+        var rating = document.getElementById("rating");
+        var ratingValue = document.getElementById("rating-value");
+        rating.addEventListener("input", function () {
+          ratingValue.textContent = rating.value + " · " + RATING_WORDS[rating.value];
+        });
+
+        var message = document.getElementById("message");
+        var counter = document.getElementById("message-counter");
+        message.addEventListener("input", function () {
+          var used = message.value.length;
+          var limit = Number(message.getAttribute("maxlength"));
+          counter.textContent = used + " / " + limit;
+          counter.classList.toggle("near", used > limit * 0.85 && used <= limit);
+          counter.classList.toggle("over", used >= limit);
+        });
+
+        /* ---------- file input ------------------------------------------- */
+
+        var fileInput = document.getElementById("screenshot");
+        var fileDrop = document.getElementById("file-drop");
+        var fileName = document.getElementById("file-name");
+        var fileMeta = document.getElementById("file-meta");
+        var fileClear = document.getElementById("file-clear");
+
+        function formatBytes(bytes) {
+          if (bytes < 1024) return bytes + " B";
+          if (bytes < 1048576) return Math.round(bytes / 1024) + " KB";
+          return (bytes / 1048576).toFixed(1) + " MB";
+        }
+
+        function renderFile() {
+          var file = fileInput.files && fileInput.files[0];
+          if (file) {
+            fileName.textContent = file.name;
+            fileMeta.textContent = formatBytes(file.size) + " · " + (file.type || "unknown type");
+            fileClear.hidden = false;
+          } else {
+            fileName.textContent = "Choose an image or drop one here";
+            fileMeta.textContent = "JPEG, PNG or WebP · up to 5 MB";
+            fileClear.hidden = true;
+          }
+          showError("screenshot", checkField("screenshot"));
+        }
+
+        fileInput.addEventListener("change", renderFile);
+
+        fileClear.addEventListener("click", function (event) {
+          event.preventDefault();
+          fileInput.value = "";
+          renderFile();
+        });
+
+        // The wrapper is a label, so Enter and Space should open the picker too.
+        fileDrop.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            fileInput.click();
+          }
+        });
+
+        ["dragenter", "dragover"].forEach(function (type) {
+          fileDrop.addEventListener(type, function (event) {
+            event.preventDefault();
+            fileDrop.classList.add("dragging");
+          });
+        });
+
+        ["dragleave", "drop"].forEach(function (type) {
+          fileDrop.addEventListener(type, function (event) {
+            event.preventDefault();
+            fileDrop.classList.remove("dragging");
+          });
+        });
+
+        fileDrop.addEventListener("drop", function (event) {
+          var dropped = event.dataTransfer && event.dataTransfer.files;
+          if (dropped && dropped.length) {
+            fileInput.files = dropped;
+            renderFile();
+          }
+        });
+
+        /* ---------- submit ------------------------------------------------ */
+
+        /** Shows the summary box with plain lines of text. */
+        function showSummary(title, lines) {
+          document.getElementById("summary-title").textContent = title;
+          summaryList.innerHTML = "";
+          lines.forEach(function (line) {
+            var item = document.createElement("li");
+            item.textContent = line;
+            summaryList.appendChild(item);
+          });
+          summary.classList.add("show");
+          summary.focus();
+        }
+
+        function buildSummary(failures) {
+          document.getElementById("summary-title").textContent = "Please check these fields";
+          summaryList.innerHTML = "";
+          failures.forEach(function (failure) {
+            var input = fieldById(failure.name);
+            var item = document.createElement("li");
+            var link = document.createElement("a");
+            link.href = "#" + (input && input.id ? input.id : "");
+            link.textContent = labelFor(failure.name) + ": " + failure.message;
+            link.addEventListener("click", function (event) {
+              event.preventDefault();
+              if (input) input.focus();
+            });
+            item.appendChild(link);
+            summaryList.appendChild(item);
+          });
+          summary.classList.add("show");
+          summary.focus();
+        }
+
+        function collect() {
+          var data = new FormData(form);
+          var file = fileInput.files && fileInput.files[0];
+          return {
+            name: String(data.get("name") || ""),
+            email: String(data.get("email") || ""),
+            phone: String(data.get("phone") || ""),
+            country: String(data.get("country") || ""),
+            topic: String(data.get("topic") || ""),
+            readingId: String(data.get("readingId") || ""),
+            readingDate: String(data.get("readingDate") || ""),
+            rating: Number(data.get("rating") || 0),
+            device: data.getAll("device").map(String),
+            message: String(data.get("message") || ""),
+            attachment: file ? file.name + " (" + formatBytes(file.size) + ")" : "none",
+            updates: data.get("updates") === "yes",
+            consent: data.get("consent") === "yes"
+          };
+        }
+
+        function finish(title, text, payload, sent) {
+          // The green tick means "delivered". When there is nowhere to deliver
+          // to, the panel must not wear it.
+          var icon = document.getElementById("done-icon");
+          icon.textContent = sent ? "✓" : "📋";
+          icon.classList.toggle("pending", !sent);
+
+          document.getElementById("done-title").textContent = title;
+          document.getElementById("done-text").textContent = text;
+
+          var ECHO_LABELS = {
+            name: "Name",
+            email: "Email",
+            phone: "Phone",
+            country: "Country",
+            topic: "Topic",
+            readingId: "Reading ID",
+            readingDate: "Date",
+            rating: "Rating",
+            device: "How it was used",
+            message: "Message",
+            attachment: "Attachment",
+            updates: "Wants updates",
+            consent: "Agreed to be contacted"
+          };
+
+          var echo = document.getElementById("done-echo");
+          echo.innerHTML = "";
+          Object.keys(payload).forEach(function (key) {
+            var value = payload[key];
+            if (value === "" || value === false || (Array.isArray(value) && !value.length)) return;
+            var dt = document.createElement("dt");
+            dt.textContent = ECHO_LABELS[key] || key;
+            var dd = document.createElement("dd");
+            dd.textContent = Array.isArray(value)
+              ? value.join(", ")
+              : value === true
+                ? "yes"
+                : String(value);
+            echo.appendChild(dt);
+            echo.appendChild(dd);
+          });
+
+          form.hidden = true;
+          summary.classList.remove("show");
+          done.hidden = false;
+          done.scrollIntoView({ behavior: "smooth", block: "center" });
+          document.getElementById("done-title").focus();
+        }
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Bots fill hidden fields and submit instantly. People do neither.
+          if (form.elements.website.value || Date.now() - openedAt < 2000) {
+            showSummary("Just a moment", [
+              "That was sent unusually fast, which is how automated spam behaves. Please read your message over and send it again."
+            ]);
+            return;
+          }
+
+          var failures = validateAll();
+          if (failures.length) {
+            buildSummary(failures);
+            var first = fieldById(failures[0].name);
+            if (first) first.focus();
+            return;
+          }
+
+          summary.classList.remove("show");
+
+          var endpoint = form.dataset.endpoint;
+          var payload = collect();
+
+          if (!endpoint) {
+            // No endpoint is configured, so say exactly that instead of
+            // pretending the message went somewhere.
+            finish(
+              "Your form is valid, but nothing was sent",
+              'This page has no "data-endpoint" set yet, so there is nowhere to deliver the message. Everything below passed validation and is ready to post.',
+              payload,
+              false
+            );
+            return;
+          }
+
+          submitButton.disabled = true;
+          submitButton.innerHTML = '<span class="spinner" aria-hidden="true"></span> Sending…';
+
+          var body = new FormData(form);
+          body.delete("website");
+
+          fetch(endpoint, { method: "POST", body: body })
+            .then(function (response) {
+              if (!response.ok) throw new Error("The server answered with " + response.status + ".");
+              finish(
+                "Thanks, that is on its way",
+                "We have your message and will reply to " + payload.email + ". Most answers go out within two working days.",
+                payload,
+                true
+              );
+            })
+            .catch(function (error) {
+              showSummary("Your message did not send", [
+                "We could not send your message. " +
+                  (error && error.message ? error.message : "") +
+                  " Please check your connection and try again."
+              ]);
+            })
+            .finally(function () {
+              submitButton.disabled = false;
+              submitButton.textContent = "Send message";
+            });
+        });
+
+        form.addEventListener("reset", function () {
+          window.setTimeout(function () {
+            VALIDATED.forEach(function (name) {
+              showError(name, "");
+            });
+            summary.classList.remove("show");
+            readingRow.hidden = true;
+            counter.textContent = "0 / 1200";
+            counter.className = "counter";
+            ratingValue.textContent = "4 · Good";
+            renderFile();
+            openedAt = Date.now();
+          }, 0);
+        });
+
+        document.getElementById("again").addEventListener("click", function () {
+          form.reset();
+          form.hidden = false;
+          done.hidden = true;
+          openedAt = Date.now();
+          document.getElementById("name").focus();
+        });
+      })();
+    </script>
+  </body>
+</html>
