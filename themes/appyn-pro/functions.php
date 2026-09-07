@@ -38,7 +38,7 @@ new APX_Blocks();
 new APX_Customizer();
 
 /**
- * Load the child theme text domain.
+ * Load the theme text domain.
  */
 function apx_load_textdomain() {
 	load_child_theme_textdomain( 'appyn-pro', APX_DIR . '/languages' );

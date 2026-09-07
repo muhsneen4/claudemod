@@ -9,7 +9,8 @@ theme_name="$(basename "$theme_dir")"
 out_dir="$theme_dir/dist"
 zip_file="$out_dir/$theme_name.zip"
 
-rm -rf "$out_dir"
+# Only clear this build's own artefact: dist/ may also hold the standalone zip.
+rm -f "$zip_file"
 mkdir -p "$out_dir"
 
 cd "$theme_dir/.."

@@ -105,6 +105,47 @@ the generated CSS is one cached inline block rather than an extra request.
 
 ---
 
+## Two ways to ship it
+
+### 1. Child theme (recommended)
+
+`tools/build-theme.sh` writes `dist/appyn-pro.zip`. It needs the Appyn parent theme
+present in `wp-content/themes/` and leaves the parent untouched, so Appyn updates keep
+arriving normally and Appyn Pro rides on top of them.
+
+### 2. Standalone theme (one theme, no parent needed)
+
+`tools/build-standalone.php` merges Appyn and Appyn Pro into a single installable theme:
+
+```bash
+php tools/build-standalone.php /path/to/appyn.zip     # or a folder
+# writes dist/appyn-pro-standalone.zip
+```
+
+What the merge does:
+
+* copies the whole Appyn theme, then drops the Appyn Pro `inc/`, `assets/css/theme.css`,
+  `assets/js/theme.js` and `assets/admin/` on top - no filename collides with Appyn's own
+  `includes/` and `assets/`;
+* moves the four templates Appyn Pro replaces (`header-default.php`,
+  `footer-default.php`, `template-parts/loop/app.php`, `template-parts/loop/blog-home.php`)
+  into `appyn-original/` and repoints the fallback switches there, so *Use Appyn Pro
+  header & footer* and *…cards* still fall back to the untouched Appyn markup;
+* appends one `require_once` to `functions.php` that loads
+  `inc/appyn-pro-bootstrap.php` - nothing above that line is edited;
+* rewrites the `style.css` theme header to "Appyn Pro", keeping the base version in the
+  description and crediting ThemesPixel for the base theme.
+
+**When Appyn releases an update:** download the new Appyn zip and run the same command
+again. The script always starts from the fresh parent files, so an update can never
+overwrite the Appyn Pro code. Note that a standalone build no longer receives Appyn's
+in-dashboard update notice for itself - rebuilding is the update path. If you would
+rather keep automatic parent updates, use the child theme build instead.
+
+Both builds share exactly the same code; only the packaging differs.
+
+---
+
 ## Development
 
 The theme is plain PHP, CSS and JavaScript - no build step. To package it:
