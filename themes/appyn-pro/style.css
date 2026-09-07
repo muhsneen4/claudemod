@@ -1,0 +1,17 @@
+@charset "utf-8";
+/*
+Theme Name: Appyn Pro
+Theme URI: https://example.com/appyn-pro
+Description: Professional, fully admin-controlled child theme for the Appyn APK download theme. Every colour, font, size, spacing, animation and layout choice is editable from Appearance > Appyn Pro. No hardcoded design values.
+Author: Appyn Pro
+Version: 1.0.0
+Template: appyn
+Text Domain: appyn-pro
+Tags: apk, apps, games, dark-mode, customizable
+*/
+
+/*
+ * This file only carries the theme header.
+ * The real styling lives in assets/css/theme.css and is driven entirely by the
+ * CSS custom properties generated from the Theme Options panel.
+ */
